@@ -1,10 +1,17 @@
 from org.transcrypt.stubs.browser import *
 import random
 
+## document foxtrot
 array = []
 
 def gen_random_int(number, seed):
-	pass
+	## code begins
+	random.seed(seed)
+	result = list(range(number))
+	random.shuffle(result)
+	return result
+	## code ends
+
 
 def generate():
 	global array
@@ -14,19 +21,32 @@ def generate():
 
 	# call gen_random_int() with the given number and seed
 	# store it to the global variable array
-	pass
+	array = gen_random_int(number, seed)
 
-	array = None
+
 	# convert the items into one single string 
 	# the number should be separated by a comma
 	# and a full stop should end the string.
-	pass
 
-	array_str = None
+	array_str = ",".join(str(element) for element in array)+"."
 
 	# This line is to placed the string into the HTML
 	# under div section with the id called "generate"	
 	document.getElementById("generate").innerHTML = array_str
+
+def bubble_sort(array):
+	changed = True
+	n = len(array)
+	while changed:
+		changed = False
+		next_n = 0
+		for i in range(1,n):
+			if array[i-1] > array[i]:
+				array[i-1], array[i] = array[i], array[i-1]
+				changed = True
+				next_n = i
+		n = next_n
+
 
 
 def sortnumber1():
@@ -39,9 +59,11 @@ def sortnumber1():
 		- call your sort function, either bubble sort or insertion sort
 		- create a string of the sorted numbers and store it in array_str
 	'''
-	pass
 
-	array_str = None
+	sort_array = array[:]  ## make a copy
+	bubble_sort(sort_array)
+
+	array_str = ",".join(str(element) for element in sort_array)+"."
 	
 	document.getElementById("sorted").innerHTML = array_str
 
@@ -65,10 +87,17 @@ def sortnumber2():
 		return
 
 	# Your code should start from here
+	words = value.split(",") 
+	try:
+		nums = [float(elem) for elem in words]
+	except:
+		window.alert("Your textbox contains invalid numerics")
+		return
 	# store the final string to the variable array_str
-	pass
+	bubble_sort(nums)
 
-	array_str = None
+
+	array_str = ",".join(str(element) for element in nums)+"."
 
 	document.getElementById("sorted").innerHTML = array_str
 

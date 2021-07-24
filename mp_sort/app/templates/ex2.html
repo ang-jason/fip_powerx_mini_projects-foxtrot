@@ -2,15 +2,27 @@
     <head>
         <title>{{title}}</title>
         <script type="module">import * as library from './static/__target__/library.js'; window.library = library;</script>
+      <style>
+         body {
+         font-family: Helvetica, sans-serif;
+         font-weight: bold;
+         }
+      </style>
     </head>
     <body>
         <h1>Welcome to {{title}}</h1>
         <p>
         	In this project you will enter some random number and sort them.
         </p>
+             <p>
+                 For Testing: </br>
+                         -4, -5, 6, -9, 0, 82, 7, 13.3, 3.2, -200 </br>
+                         8, 6, 7, 3, 2, 5, 9, 4, 0, 1</br>
+                            -1,2,3,0,-4,27,-100,202,13</br>
+      </p>
         <p>
         	<div id="generate">Enter a sequence of numbers separated by a comma (","):</div>
-        	## Enter the code here to create a Text Input. ##
+        	Numbers: <input type="text" name="numbers" id="numbers" value="" size="75">
         </p>
         <p>
         	<div id="sorted">...</div>
